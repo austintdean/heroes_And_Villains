@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Super
 from .serializers import SuperSerializer
-from super_types import serializers
+from Super import serializers
 
 
 
@@ -12,7 +12,13 @@ from super_types import serializers
 @api_view(['GET','POST'])
 def get_all_supers(request):
    if request.method == 'GET':
+      super_param = request.query_params.get('type')
       super = Super.objects.all()
+
+      if super_param:
+         super = super.filter(super_type__type=super_param)
+
+
       serializer = SuperSerializer(super, many=True)
       return Response(serializer.data)
 
