@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('primary_ability', models.CharField(max_length=255)),
                 ('secondary_ability', models.CharField(max_length=255)),
                 ('catchphrase', models.CharField(max_length=255)),
-                ('super_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='super_types.super_type')),
+                ('type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='super_types.super_type')),
             ],
         ),
     ]
